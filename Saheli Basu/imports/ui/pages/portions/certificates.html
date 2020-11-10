@@ -1,1 +1,97 @@
+<!-- template for showing the user's certificates -->
+<template name="certificates">
+    <div class="container template_root">
+        <div class="row">
+            <div class="col-sm-5">
+                {{> certList }}
+            </div>
+            <div class="col-sm-7">
+                {{> certForm }}
+            </div>
+        </div>
+    </div>
+    {{> footer }}
+</template>
 
+<!-- template for showing a particualr certificate -->
+<template name="certificate">
+    <div class="container-fluid template_root">
+        <div class="row">
+            <div class="col-sm-3">
+                {{> certabout }}
+                <h4>certificate Name:</h4>
+                <p>{{certificateName}}</p>
+                <h4>certificate Description:</h4>
+                <p>{{certificateDescription}}</p>
+            </div>
+            <div class="col-sm-9">
+                <!-- certificate column -->
+                {{> fullcertificate options id="certificate" }}
+            </div>
+        </div>
+    </div>
+    {{> footer }}
+</template>
+
+<!-- list of the user's certificates -->
+<template name="certList">
+    {{#if hascerts}}
+        <div id="external-events-about">
+            <h4>Your certs</h4>
+            {{#each cert in certs}}
+                {{> certItem cert=cert}}
+            {{/each}}
+        </div>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Well done!</strong> Click a certificate now to view it and add about.
+        </div>
+    {{else}}
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong>It looks like you have not created any certificates yet. Use the form on this page to create
+            some certificates first.
+        </div>
+    {{/if}}
+</template>
+
+<template name="certItem">
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="fc-event fc-event-about js-goto-cert">
+                {{this.cert.name}}
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <a href="#" class="js-delete-cert"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</template>
+
+<!-- add certificate form template -->
+<template name="certForm">
+    <h4>Add certificate Form:</h4>
+    {{> quickForm id="certForm" collection="certificates" type="insert"}}
+</template>
+
+<!-- the about to show on a certificate page -->
+<template name="certabout">
+    {{#if hasabout}}
+        <div id="external-events">
+            <h4>Draggable about</h4>
+            {{#each about in about}}
+                {{> certaboutItem about=about}}
+            {{/each}}
+        </div>
+    {{else}}
+        <h4>No about found:</h4>
+        <p>It looks like you have not created any about yet. Go back to <a href="/about">about</a> first.</p>
+    {{/if}}
+</template>
+
+<!-- each about draggable to a certificate -->
+<template name="certaboutItem">
+    <div class="fc-event">
+        {{this.about.name}}
+    </div>
+</template>
