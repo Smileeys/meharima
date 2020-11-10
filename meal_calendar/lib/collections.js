@@ -4,20 +4,29 @@
 
 import { Mongo } from 'meteor/mongo';
 
-Meals = new Mongo.Collection('meals');
-Calendars = new Mongo.Collection('calendars');
+// Meals = new Mongo.Collection('meals');
+// Calendars = new Mongo.Collection('calendars');
 
+/* global About:true */
+/* global Certificates:true */
+/* global SimpleSchema:true */
+
+About = new Mongo.Collection('about');
+Certificates = new Mongo.Collection('certificates');
 
 // calendar schema
-Calendars.attachSchema(new SimpleSchema({
+//Calendars.attachSchema(new SimpleSchema({ name: {type: String, max: 20, label: 'Calendar Name',},description: { type: String,label: 'Calendar Description',max: 1000,autoform: {rows: 4, },},owner: { type: String,optional: true,autoform: {omit: true, },},}));///
+
+// certificates schema
+Certificates.attachSchema(new SimpleSchema({
     name: {
         type: String,
         max: 20,
-        label: 'Calendar Name',
+        label: 'Certificate Name',
     },
     description: {
         type: String,
-        label: 'Calendar Description',
+        label: 'Certificate Description',
         max: 1000,
         autoform: {
             rows: 4,
@@ -32,16 +41,16 @@ Calendars.attachSchema(new SimpleSchema({
     },
 }));
 
-// meals schema
-Meals.attachSchema(new SimpleSchema({
+// about schema
+About.attachSchema(new SimpleSchema({
     name: {
         type: String,
         max: 20,
-        label: 'Meal Name',
+        label: 'Info',
     },
     description: {
         type: String,
-        label: 'Meal Description',
+        label: 'Other Description',
         max: 1000,
         autoform: {
             rows: 4,
