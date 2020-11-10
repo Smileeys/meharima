@@ -1,0 +1,54 @@
+<!-- template for showing the user's about -->
+<template name="about">
+    <div class="container template_root">
+        <div class="row">
+            <div class="col-sm-5">
+                {{> aboutList }}
+            </div>
+            <div class="col-sm-7">
+                {{> aboutForm }}
+            </div>
+        </div>
+
+    </div>
+    {{> footer }}
+</template>
+
+<!-- list of the user's about -->
+<template name="aboutList">
+    {{#if hasabout}}
+        <div id="external-events-about">
+            <h4>Your about</h4>
+            {{#each part in about}}
+                {{> aboutItem about=about}}
+            {{/each}}
+        </div>
+        <div class="alert alert-dismissible alert-success">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Well done!</strong> Go to <a href="/certificates" class="alert-link">certificates</a> 
+        </div>
+    {{else}}
+        <div class="alert alert-dismissible alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Oh snap!</strong>It looks like you have not created any comment yet. Use the form on this page to post a comment first.
+        </div>
+    {{/if}}
+</template>
+
+<template name="aboutItem">
+    <div class="row">
+        <div class="col-xs-10">
+            <div class="fc-event fc-event-about">
+                {{this.about.name}}
+            </div>
+        </div>
+        <div class="col-xs-2">
+            <a href="#" class="js-delete-about"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</template>
+
+<template name="aboutForm">
+    <h4>Add about Form:</h4>
+    {{> quickForm id="aboutForm" collection="about" type="insert"}}
+</template>

@@ -1,0 +1,35 @@
+<template name="home">
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Saheli Basu</h1>
+            <h2>The portfolio app</h2>
+            <p>Login to view <a href="/about" class="js-meals-link">About</a> and <a href="/certificates" class="js-cals-link">Certificates</a>.
+            </p>
+            <p><a class="btn btn-primary btn-lg" href="/instructions" role="button">Instructions &raquo;</a></p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>About</h2>
+                <p>Click below to view the contents.</p>
+                <p><a class="btn btn-default {{isLoggedIn}}" href="/about" role="button">View About &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Certificates</h2>
+                <p>Click below to view certificates. </p>
+                <!-- disable -->
+                <p><a class="btn btn-default {{isLoggedIn}}" href="/certificates" role="button">View Certificates &raquo;</a></p>
+            </div>
+            <div class="col-md-4">
+                <h2>Instructions</h2>
+                <p>Click below to view the instruction for this app.</p>
+                <p><a class="btn btn-default" href="/instructions" role="button">View Instructions &raquo;</a></p>
+            </div>
+        </div>
+    </div>
+    {{> footer }}
+</template>
