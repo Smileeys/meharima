@@ -1,11 +1,8 @@
-/* global Meals:true */
-/* global Calendars:true */
-/* global SimpleSchema:true */
+// /* global Meals:true *//* global Calendars:true *//* global SimpleSchema:true */// Meals = new Mongo.Collection('meals');// Calendars = new Mongo.Collection('calendars');// calendar schema//Calendars.attachSchema(new SimpleSchema({ name: {type: String, max: 20, label: 'Calendar Name',},description: { type: String,label: 'Calendar Description',max: 1000,autoform: {rows: 4, },},owner: { type: String,optional: true,autoform: {omit: true, },},}));///
 
 import { Mongo } from 'meteor/mongo';
 
-// Meals = new Mongo.Collection('meals');
-// Calendars = new Mongo.Collection('calendars');
+
 
 /* global About:true */
 /* global Certificates:true */
@@ -14,8 +11,7 @@ import { Mongo } from 'meteor/mongo';
 About = new Mongo.Collection('about');
 Certificates = new Mongo.Collection('certificates');
 
-// calendar schema
-//Calendars.attachSchema(new SimpleSchema({ name: {type: String, max: 20, label: 'Calendar Name',},description: { type: String,label: 'Calendar Description',max: 1000,autoform: {rows: 4, },},owner: { type: String,optional: true,autoform: {omit: true, },},}));///
+
 
 // certificates schema
 Certificates.attachSchema(new SimpleSchema({
